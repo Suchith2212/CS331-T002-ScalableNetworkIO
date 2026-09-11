@@ -41,7 +41,7 @@ This document details the step-by-step collaboration between **Team T002** (**Su
 - **AI Contribution**: Generated initial multi-threaded Python benchmark script and Matplotlib plotting framework.
 - **Human Verification & Audit**:
   - When the initial multi-threaded Python harness crashed at 5,000 connections (`RuntimeError: can't start new thread`), Hanook diagnosed OS thread stack limits and guided AI to refactor the harness to single-threaded Python `asyncio` non-blocking streams.
-  - Verified plotting outputs (`throughput_vs_connections.png`, `latency_p99_vs_connections.png`, `memory_scalability.png`, `syscall_efficiency_comparison.png`).
+  - Verified plotting outputs (`throughput_vs_connections.png`, `latency_p99_vs_connections.png`, `memory_scalability.png`).
 
 ---
 

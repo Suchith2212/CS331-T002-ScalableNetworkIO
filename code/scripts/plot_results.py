@@ -109,28 +109,6 @@ def plot_memory(data):
     plt.close()
     print(f"Generated chart: {out_file}")
 
-def plot_syscall_complexity():
-    plt.figure(figsize=(9, 5))
-    servers = ["Blocking", "select()", "poll()", "epoll()", "io_uring"]
-    complexity_scores = [100, 85, 70, 25, 5]  # Conceptual relative syscall overhead per 10k ops
-    colors = ["#e74c3c", "#e67e22", "#f1c40f", "#3498db", "#2ecc71"]
-
-    bars = plt.bar(servers, complexity_scores, color=colors, width=0.55, edgecolor="black")
-    plt.title("Theoretical Architectural Syscall Complexity per 10k IO Ops", fontsize=13, fontweight="bold", pad=15)
-    plt.ylabel("Normalized Syscall Complexity (%)", fontsize=11)
-    plt.grid(axis="y", linestyle="--", alpha=0.6)
-
-    for bar in bars:
-        yval = bar.get_height()
-        plt.text(bar.get_x() + bar.get_width()/2.0, yval + 1.5, f"{yval}%", ha='center', va='bottom', fontweight='bold')
-
-    plt.ylim(0, 115)
-    plt.tight_layout()
-    out_file = os.path.join(RESULTS_DIR, "syscall_efficiency_comparison.png")
-    plt.savefig(out_file, dpi=300)
-    plt.close()
-    print(f"Generated chart: {out_file}")
-
 def main():
     data = load_data()
     if not data:
@@ -138,8 +116,7 @@ def main():
     plot_throughput(data)
     plot_latency(data)
     plot_memory(data)
-    plot_syscall_complexity()
-    print("\nAll 4 benchmark plots successfully generated!")
+    print("\nAll 3 empirical benchmark plots successfully generated!")
 
 if __name__ == "__main__":
     main()
