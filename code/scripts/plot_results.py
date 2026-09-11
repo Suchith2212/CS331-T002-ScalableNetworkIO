@@ -116,8 +116,8 @@ def plot_syscall_complexity():
     colors = ["#e74c3c", "#e67e22", "#f1c40f", "#3498db", "#2ecc71"]
 
     bars = plt.bar(servers, complexity_scores, color=colors, width=0.55, edgecolor="black")
-    plt.title("Relative System Call Overhead per 10,000 IO Operations", fontsize=13, fontweight="bold", pad=15)
-    plt.ylabel("Normalized Syscall Overhead (%)", fontsize=11)
+    plt.title("Theoretical Architectural Syscall Complexity per 10k IO Ops", fontsize=13, fontweight="bold", pad=15)
+    plt.ylabel("Normalized Syscall Complexity (%)", fontsize=11)
     plt.grid(axis="y", linestyle="--", alpha=0.6)
 
     for bar in bars:

@@ -75,12 +75,12 @@ All generated PNG plots (`throughput_vs_connections.png`, `latency_p99_vs_connec
 
 ---
 
-## 📊 Summary of Benchmark Results
+## 📊 Summary of Empirical Benchmark Results
 
 | Server Engine | 10 Conns | 500 Conns | 1,000 Conns | 5,000 Conns | Key Architectural Property |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **`blocking`** | 27,431 req/s | 37,707 req/s | 37,883 req/s | 32,373 req/s | High memory footprint (~12.4 MB RSS at 5k conns) |
-| **`select()`** | **89,682 req/s** | 117,831 req/s | 87,445 req/s | *Exceeded limit* | Hard-capped at `FD_SETSIZE = 1024` descriptors |
-| **`poll()`** | 78,590 req/s | **123,672 req/s** | **108,819 req/s** | **77,367 req/s** | $O(N)$ array scanning; scales past 1024 descriptors |
-| **`epoll()`** | 75,667 req/s | 79,541 req/s | 71,059 req/s | 56,459 req/s | $O(1)$ ready-list event queue with minimal ~1.5 MB RSS |
-| **`io_uring`** | 65,636 req/s | 70,026 req/s | 64,213 req/s | 46,399 req/s | Completion queue ring buffer; zero per-I/O syscall cost |
+| **`blocking`** | 16,954 req/s | 21,498 req/s | 14,864 req/s | 3,984 req/s | Multi-threaded (thread-per-client); high VmRSS RAM (~26.8 MB at 5k conns) |
+| **`select()`** | 24,688 req/s | 35,620 req/s | **50,907 req/s** | *Exceeded limit* | Hard-capped at compile-time `FD_SETSIZE = 1024` bitmask limit |
+| **`poll()`** | **46,254 req/s** | **43,246 req/s** | 55,332 req/s | 26,569 req/s | Single-threaded $O(N)$ array scanning; minimal overhead for small FD counts |
+| **`epoll()`** | 35,306 req/s | 25,304 req/s | 18,897 req/s | **28,142 req/s** | Single-threaded $O(K)$ ready-list queue; lowest VmRSS footprint (~1.5 MB) |
+| **`io_uring`** | 33,371 req/s | 31,332 req/s | 29,287 req/s | 21,543 req/s | Single-threaded batched completion ring buffer; reduces syscall frequency via batching |

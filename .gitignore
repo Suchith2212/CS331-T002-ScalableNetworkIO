@@ -1,0 +1,12 @@
+# Temporary MS Office lock files
+~$*
+~$*.pptx
+~$*.docx
+
+# Compiled C binaries
+bin/
+code/bin/
+
+# OS metadata
+.DS_Store
+Thumbs.db
