@@ -1,0 +1,278 @@
+{
+  "server_blocking": {
+    "10": {
+      "throughput_rps": 16953.92,
+      "latency_avg_ms": 0.588,
+      "latency_p50_ms": 0.486,
+      "latency_p99_ms": 2.444,
+      "total_requests": 84842,
+      "memory_rss_kb": 1664,
+      "status": "OK"
+    },
+    "100": {
+      "throughput_rps": 26739.46,
+      "latency_avg_ms": 3.719,
+      "latency_p50_ms": 3.309,
+      "latency_p99_ms": 10.303,
+      "total_requests": 134091,
+      "memory_rss_kb": 2556,
+      "status": "OK"
+    },
+    "500": {
+      "throughput_rps": 21497.58,
+      "latency_avg_ms": 22.885,
+      "latency_p50_ms": 21.813,
+      "latency_p99_ms": 41.124,
+      "total_requests": 108811,
+      "memory_rss_kb": 3840,
+      "status": "OK"
+    },
+    "1000": {
+      "throughput_rps": 14864.32,
+      "latency_avg_ms": 62.481,
+      "latency_p50_ms": 56.612,
+      "latency_p99_ms": 150.084,
+      "total_requests": 81181,
+      "memory_rss_kb": 3760,
+      "status": "OK"
+    },
+    "2000": {
+      "throughput_rps": 6195.13,
+      "latency_avg_ms": 245.281,
+      "latency_p50_ms": 228.715,
+      "latency_p99_ms": 387.488,
+      "total_requests": 35991,
+      "memory_rss_kb": 11556,
+      "status": "OK"
+    },
+    "5000": {
+      "throughput_rps": 3984.49,
+      "latency_avg_ms": 418.581,
+      "latency_p50_ms": 427.555,
+      "latency_p99_ms": 690.451,
+      "total_requests": 23579,
+      "memory_rss_kb": 26848,
+      "status": "OK"
+    }
+  },
+  "server_select": {
+    "10": {
+      "throughput_rps": 24688.31,
+      "latency_avg_ms": 0.403,
+      "latency_p50_ms": 0.275,
+      "latency_p99_ms": 2.581,
+      "total_requests": 123626,
+      "memory_rss_kb": 1280,
+      "status": "OK"
+    },
+    "100": {
+      "throughput_rps": 26520.09,
+      "latency_avg_ms": 3.71,
+      "latency_p50_ms": 2.979,
+      "latency_p99_ms": 12.793,
+      "total_requests": 133694,
+      "memory_rss_kb": 1280,
+      "status": "OK"
+    },
+    "500": {
+      "throughput_rps": 35620.47,
+      "latency_avg_ms": 13.609,
+      "latency_p50_ms": 12.567,
+      "latency_p99_ms": 35.998,
+      "total_requests": 179170,
+      "memory_rss_kb": 1280,
+      "status": "OK"
+    },
+    "1000": {
+      "throughput_rps": 50907.24,
+      "latency_avg_ms": 18.823,
+      "latency_p50_ms": 16.882,
+      "latency_p99_ms": 49.89,
+      "total_requests": 257447,
+      "memory_rss_kb": 1280,
+      "status": "OK"
+    },
+    "2000": {
+      "throughput_rps": 0,
+      "latency_avg_ms": 0,
+      "latency_p99_ms": 0,
+      "memory_rss_kb": 0,
+      "status": "FD_SETSIZE_EXCEEDED"
+    },
+    "5000": {
+      "throughput_rps": 0,
+      "latency_avg_ms": 0,
+      "latency_p99_ms": 0,
+      "memory_rss_kb": 0,
+      "status": "FD_SETSIZE_EXCEEDED"
+    }
+  },
+  "server_poll": {
+    "10": {
+      "throughput_rps": 46253.75,
+      "latency_avg_ms": 0.215,
+      "latency_p50_ms": 0.172,
+      "latency_p99_ms": 0.896,
+      "total_requests": 231578,
+      "memory_rss_kb": 1280,
+      "status": "OK"
+    },
+    "100": {
+      "throughput_rps": 59024.7,
+      "latency_avg_ms": 1.684,
+      "latency_p50_ms": 1.396,
+      "latency_p99_ms": 6.924,
+      "total_requests": 296008,
+      "memory_rss_kb": 1280,
+      "status": "OK"
+    },
+    "500": {
+      "throughput_rps": 43246.13,
+      "latency_avg_ms": 11.25,
+      "latency_p50_ms": 10.161,
+      "latency_p99_ms": 22.779,
+      "total_requests": 218492,
+      "memory_rss_kb": 1280,
+      "status": "OK"
+    },
+    "1000": {
+      "throughput_rps": 55331.79,
+      "latency_avg_ms": 17.46,
+      "latency_p50_ms": 16.521,
+      "latency_p99_ms": 33.443,
+      "total_requests": 279322,
+      "memory_rss_kb": 1280,
+      "status": "OK"
+    },
+    "2000": {
+      "throughput_rps": 42085.46,
+      "latency_avg_ms": 41.658,
+      "latency_p50_ms": 37.88,
+      "latency_p99_ms": 74.92,
+      "total_requests": 216000,
+      "memory_rss_kb": 1280,
+      "status": "OK"
+    },
+    "5000": {
+      "throughput_rps": 26568.97,
+      "latency_avg_ms": 155.618,
+      "latency_p50_ms": 130.521,
+      "latency_p99_ms": 323.361,
+      "total_requests": 145000,
+      "memory_rss_kb": 1280,
+      "status": "OK"
+    }
+  },
+  "server_epoll": {
+    "10": {
+      "throughput_rps": 35305.67,
+      "latency_avg_ms": 0.282,
+      "latency_p50_ms": 0.22,
+      "latency_p99_ms": 1.312,
+      "total_requests": 176706,
+      "memory_rss_kb": 1536,
+      "status": "OK"
+    },
+    "100": {
+      "throughput_rps": 40691.59,
+      "latency_avg_ms": 2.437,
+      "latency_p50_ms": 1.912,
+      "latency_p99_ms": 11.231,
+      "total_requests": 204373,
+      "memory_rss_kb": 1536,
+      "status": "OK"
+    },
+    "500": {
+      "throughput_rps": 25304.16,
+      "latency_avg_ms": 19.305,
+      "latency_p50_ms": 16.968,
+      "latency_p99_ms": 57.981,
+      "total_requests": 127466,
+      "memory_rss_kb": 1536,
+      "status": "OK"
+    },
+    "1000": {
+      "throughput_rps": 18896.57,
+      "latency_avg_ms": 50.334,
+      "latency_p50_ms": 41.571,
+      "latency_p99_ms": 151.274,
+      "total_requests": 97447,
+      "memory_rss_kb": 1536,
+      "status": "OK"
+    },
+    "2000": {
+      "throughput_rps": 31250.94,
+      "latency_avg_ms": 58.135,
+      "latency_p50_ms": 57.246,
+      "latency_p99_ms": 88.878,
+      "total_requests": 161307,
+      "memory_rss_kb": 1536,
+      "status": "OK"
+    },
+    "5000": {
+      "throughput_rps": 28142.31,
+      "latency_avg_ms": 139.548,
+      "latency_p50_ms": 129.849,
+      "latency_p99_ms": 237.334,
+      "total_requests": 150000,
+      "memory_rss_kb": 1536,
+      "status": "OK"
+    }
+  },
+  "server_uring": {
+    "10": {
+      "throughput_rps": 33370.64,
+      "latency_avg_ms": 0.298,
+      "latency_p50_ms": 0.23,
+      "latency_p99_ms": 0.916,
+      "total_requests": 167237,
+      "memory_rss_kb": 2048,
+      "status": "OK"
+    },
+    "100": {
+      "throughput_rps": 35533.76,
+      "latency_avg_ms": 2.788,
+      "latency_p50_ms": 2.283,
+      "latency_p99_ms": 12.711,
+      "total_requests": 178094,
+      "memory_rss_kb": 2032,
+      "status": "OK"
+    },
+    "500": {
+      "throughput_rps": 31332.48,
+      "latency_avg_ms": 15.636,
+      "latency_p50_ms": 13.677,
+      "latency_p99_ms": 35.479,
+      "total_requests": 158075,
+      "memory_rss_kb": 2152,
+      "status": "OK"
+    },
+    "1000": {
+      "throughput_rps": 29287.42,
+      "latency_avg_ms": 32.878,
+      "latency_p50_ms": 29.654,
+      "latency_p99_ms": 64.295,
+      "total_requests": 149406,
+      "memory_rss_kb": 2116,
+      "status": "OK"
+    },
+    "2000": {
+      "throughput_rps": 25551.71,
+      "latency_avg_ms": 71.049,
+      "latency_p50_ms": 67.861,
+      "latency_p99_ms": 117.41,
+      "total_requests": 133099,
+      "memory_rss_kb": 2052,
+      "status": "OK"
+    },
+    "5000": {
+      "throughput_rps": 21543.05,
+      "latency_avg_ms": 183.489,
+      "latency_p50_ms": 177.585,
+      "latency_p99_ms": 270.42,
+      "total_requests": 119618,
+      "memory_rss_kb": 2044,
+      "status": "OK"
+    }
+  }
+}
