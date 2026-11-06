@@ -1,0 +1,21 @@
+server,conns,user_vm_rss_kb,user_pss_kb,user_vm_data_kb,kernel_tcp_mem_kb,total_estimated_kb,memory_architecture_description
+server_blocking,0,1696,199,8548,0,1696,One thread per connection (stack + pthread state)
+server_blocking,1000,15016,13516,8209252,8192,23208,One thread per connection (stack + pthread state)
+server_blocking,5000,33064,31564,19539184,24576,57640,One thread per connection (stack + pthread state)
+server_select,0,1552,170,224,0,1552,Static fd_set bitmasks (FD_SETSIZE 1024)
+server_select,1000,1544,161,224,4096,5640,Static fd_set bitmasks (FD_SETSIZE 1024)
+server_poll,0,1552,170,224,0,1552,Dynamic struct pollfd array (8B/conn) + 4KB stack buffer
+server_poll,1000,1560,175,224,6144,7704,Dynamic struct pollfd array (8B/conn) + 4KB stack buffer
+server_poll,5000,1588,203,224,33792,35380,Dynamic struct pollfd array (8B/conn) + 4KB stack buffer
+epoll_lt_server,0,1748,366,263392,0,1748,Static client_states[65536] (4KB wbuf touched per fd)
+epoll_lt_server,1000,5744,4359,263392,3072,8816,Static client_states[65536] (4KB wbuf touched per fd)
+epoll_lt_server,5000,21744,20359,263392,36864,58608,Static client_states[65536] (4KB wbuf touched per fd)
+epoll_et_server,0,1744,362,263392,0,1744,Static client_states[65536] (4KB wbuf touched per fd)
+epoll_et_server,1000,5740,4355,263392,4096,9836,Static client_states[65536] (4KB wbuf touched per fd)
+epoll_et_server,5000,21744,20359,263392,34816,56560,Static client_states[65536] (4KB wbuf touched per fd)
+epoll_lt_lean_server,0,1740,358,736,0,1740,On-demand pointer table (0B heap until write stalls)
+epoll_lt_lean_server,1000,1744,359,736,4096,5840,On-demand pointer table (0B heap until write stalls)
+epoll_lt_lean_server,5000,1780,395,736,35840,37620,On-demand pointer table (0B heap until write stalls)
+io_uring_opt_server,0,3316,1934,33636,0,3316,"Shared buffer pool (no per-connection buffer, 8192x4KB pool)"
+io_uring_opt_server,1000,36080,34699,33636,0,36080,"Shared buffer pool (no per-connection buffer, 8192x4KB pool)"
+io_uring_opt_server,5000,36116,34731,33636,17408,53524,"Shared buffer pool (no per-connection buffer, 8192x4KB pool)"

@@ -1,0 +1,10 @@
+server,conns,client_busiest_thread_util_pct,client_busiest_thread_min_pct,client_busiest_thread_max_pct,server_core_util_pct,client_saturated
+server_poll,100,99.59,99.09,99.79,20.84,YES
+server_poll,1000,99.19,98.39,99.49,24.12,YES
+server_poll,5000,98.89,98.69,99.09,33.9,YES
+epoll_lt_server,100,99.39,98.39,99.59,16.46,YES
+epoll_lt_server,1000,98.59,98.49,98.69,17.73,YES
+epoll_lt_server,5000,98.89,98.79,98.99,20.02,YES
+io_uring_opt_server,100,98.49,98.19,99.59,14.4,YES
+io_uring_opt_server,1000,98.69,98.29,98.69,17.71,YES
+io_uring_opt_server,5000,98.19,97.89,98.29,19.66,YES

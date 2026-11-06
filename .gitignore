@@ -3,9 +3,17 @@
 ~$*.pptx
 ~$*.docx
 
-# Compiled C binaries
+# Compiled C binaries and objects
 bin/
 code/bin/
+*.o
+
+# Python
+__pycache__/
+*.pyc
+
+# IDE and Editor
+.vscode/
 
 # OS metadata
 .DS_Store

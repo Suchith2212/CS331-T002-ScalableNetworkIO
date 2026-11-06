@@ -1,0 +1,13 @@
+server,conns,avg_events_per_wait,waits_per_request
+server_poll,100,4.1832,0.239403
+server_poll,1000,33.6914,0.030023
+server_poll,5000,117.5501,0.00893
+epoll_lt_server,100,1.3886,0.721335
+epoll_lt_server,1000,1.3044,0.780519
+epoll_lt_server,5000,1.3707,0.801361
+epoll_et_server,100,1.3954,0.717814
+epoll_et_server,1000,1.2963,0.785383
+epoll_et_server,5000,1.4017,0.786621
+io_uring_opt_server,100,1.7251,1.16031
+io_uring_opt_server,1000,1.5471,1.304704
+io_uring_opt_server,5000,2.4597,0.860929

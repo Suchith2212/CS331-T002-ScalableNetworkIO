@@ -1,0 +1,16 @@
+server,conns,avg_events_per_wait,waits_per_request,req_per_s
+server_poll,100,70.0399,0.014278,56835.72
+server_poll,1000,564.9673,0.00177,44719.5
+server_poll,5000,1073.7378,0.000931,52014.55
+epoll_lt_server,100,61.1123,0.016363,62307.68
+epoll_lt_server,1000,706.2691,0.001416,57391.9
+epoll_lt_server,5000,447.595,0.002234,51231.8
+epoll_et_server,100,56.5151,0.017694,60878.72
+epoll_et_server,1000,708.4272,0.001412,52463.41
+epoll_et_server,5000,447.2282,0.002236,51758.72
+epoll_lt_lean_server,100,54.7561,0.018263,62344.42
+epoll_lt_lean_server,1000,602.1793,0.001661,55529.88
+epoll_lt_lean_server,5000,266.1467,0.003757,49362.11
+io_uring_opt_server,100,57.9882,0.017245,68211.43
+io_uring_opt_server,1000,507.8532,0.001971,54462.82
+io_uring_opt_server,5000,91.9713,0.01107,34536.16

@@ -83,8 +83,8 @@ All generated PNG plots (`throughput_vs_connections.png`, `latency_p99_vs_connec
 
 | Server Engine | 10 Conns | 500 Conns | 1,000 Conns | 5,000 Conns | Key Architectural Property |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **`blocking`** | 16,954 req/s | 21,498 req/s | 14,864 req/s | 3,984 req/s | Multi-threaded (thread-per-client baseline); high VmRSS RAM (~26.8 MB at 5k conns) |
-| **`select()`** | 24,688 req/s | 35,620 req/s | **50,907 req/s** | *Exceeded limit* | Single-threaded event loop; capped by compile-time `FD_SETSIZE = 1024` bitmask limit |
-| **`poll()`** | **46,254 req/s** | **43,246 req/s** | 55,332 req/s | 26,569 req/s | Single-threaded $O(N)$ array scanning; bounded by `RLIMIT_NOFILE` process limits |
-| **`epoll()`** | 35,306 req/s | 25,304 req/s | 18,897 req/s | **28,142 req/s** | Single-threaded Edge-Triggered event loop; $O(K)$ ready-list event processing (lowest VmRSS ~1.5 MB) |
-| **`io_uring`** | 33,371 req/s | 31,332 req/s | 29,287 req/s | 21,543 req/s | Single-threaded batched completion ring buffer; reduces system call frequency via SQE batching |
+| **`blocking`** | 19,748 req/s | 30,030 req/s | 28,255 req/s | 24,588 req/s | Multi-threaded (thread-per-client baseline); linear latency degradation under heavy load |
+| **`select()`** | 57,947 req/s | **82,816 req/s** | **82,842 req/s** | *Exceeded limit* | Single-threaded event loop; capped by compile-time `FD_SETSIZE = 1024` bitmask limit |
+| **`poll()`** | **69,394 req/s** | 81,269 req/s | 78,012 req/s | **59,510 req/s** | Single-threaded $O(N)$ dynamic array with $O(1)$ swap compaction; highest throughput |
+| **`epoll()`** | 55,825 req/s | 58,829 req/s | 53,120 req/s | 42,873 req/s | Single-threaded Edge-Triggered event loop; lowest p99 latency (163 ms) and VmRSS (~1.6 MB) |
+| **`io_uring`** | 60,183 req/s | 52,083 req/s | 48,216 req/s | 39,767 req/s | Batched completion ring buffer; native `recv`/`send` SQEs with non-blocking kernel event loops |

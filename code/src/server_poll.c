@@ -1,5 +1,22 @@
 #include "../include/common.h"
 
+#ifdef STATS
+#include <time.h>
+#include <math.h>
+// Compile-time optional instrumentation for wait call & event frequency (Exp 1 & Task 5)
+// Tracks waits, request-producing events, and completed echoes with 10% consistency self-check.
+static volatile sig_atomic_t g_stop = 0;
+static unsigned long long g_waits = 0;
+static unsigned long long g_events = 0;
+static unsigned long long g_requests = 0;
+static struct timespec g_start_time;
+
+static void stats_sig_handler(int sig) {
+    (void)sig;
+    g_stop = 1;
+}
+#endif
+
 #define INITIAL_POLL_CAP 1024
 
 int main(int argc, char *argv[]) {
@@ -9,6 +26,11 @@ int main(int argc, char *argv[]) {
     }
 
     signal(SIGPIPE, SIG_IGN);
+#ifdef STATS
+    signal(SIGINT, stats_sig_handler);
+    signal(SIGTERM, stats_sig_handler);
+    clock_gettime(CLOCK_MONOTONIC, &g_start_time);
+#endif
 
     int listen_fd = make_listener(port);
     set_nonblocking(listen_fd);
@@ -29,10 +51,20 @@ int main(int argc, char *argv[]) {
 
     char buf[BUF_SIZE];
 
+#ifdef STATS
+    while (!g_stop) {
+        g_waits++;
+#else
     while (1) {
+#endif
         int activity = poll(fds, nfds, -1);
         if (activity < 0) {
-            if (errno == EINTR) continue;
+            if (errno == EINTR) {
+#ifdef STATS
+                if (g_stop) break;
+#endif
+                continue;
+            }
             perror("poll");
             break;
         }
@@ -87,6 +119,9 @@ int main(int argc, char *argv[]) {
                         fds[i].fd = -1;
                         compress_array = 1;
                     } else {
+#ifdef STATS
+                        g_events++; // Task 5: count request-producing ready data event
+#endif
                         ssize_t total_written = 0;
                         while (total_written < bytes_read) {
                             ssize_t n = write(fds[i].fd, buf + total_written, bytes_read - total_written);
@@ -103,6 +138,10 @@ int main(int argc, char *argv[]) {
                             close(fds[i].fd);
                             fds[i].fd = -1;
                             compress_array = 1;
+                        } else {
+#ifdef STATS
+                            g_requests++; // Task 5: one completed read-then-full-echo
+#endif
                         }
                     }
                 }
@@ -122,6 +161,25 @@ int main(int argc, char *argv[]) {
             }
         }
     }
+
+#ifdef STATS
+    struct timespec end_time;
+    clock_gettime(CLOCK_MONOTONIC, &end_time);
+    double elapsed = (end_time.tv_sec - g_start_time.tv_sec) + (end_time.tv_nsec - g_start_time.tv_nsec) / 1e9;
+    double avg_events = g_waits ? (double)g_events / g_waits : 0.0;
+    double waits_per_req = g_requests ? (double)g_waits / g_requests : 0.0;
+    double req_per_s = elapsed > 0 ? (double)g_requests / elapsed : 0.0;
+    printf("\n[STATS] server=server_poll waits=%llu events=%llu requests=%llu avg_events_per_wait=%.4f waits_per_request=%.6f req_per_s=%.2f\n",
+           g_waits, g_events, g_requests, avg_events, waits_per_req, req_per_s);
+    // Task 5: Consistency self-check between waits_per_request and 1/avg_events_per_wait
+    double inv_avg = avg_events > 0.0 ? (1.0 / avg_events) : 0.0;
+    double diff = fabs(waits_per_req - inv_avg);
+    if (inv_avg > 0.0 && (diff / inv_avg) > 0.10) {
+        fprintf(stderr, "[STATS WARNING] server=server_poll: waits_per_request (%.4f) and 1/avg_events (%.4f) disagree by >10%%!\n",
+                waits_per_req, inv_avg);
+    }
+    fflush(stdout);
+#endif
 
     free(fds);
     close(listen_fd);

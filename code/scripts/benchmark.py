@@ -57,6 +57,9 @@ async def async_client_worker(port, duration, stop_event, stats):
         reader, writer = await asyncio.wait_for(
             asyncio.open_connection('127.0.0.1', port), timeout=3.0
         )
+        sock = writer.get_extra_info('socket')
+        if sock:
+            sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
     except Exception:
         return
 

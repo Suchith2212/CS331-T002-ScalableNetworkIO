@@ -1,0 +1,6 @@
+server,rss_0_kb,data_0_kb,rss_1k_kb,data_1k_kb,rss_5k_kb,data_5k_kb,bytes_per_conn,cause
+server_poll,1408,224,1408,224,1536,224,26.2,Dynamic struct pollfd array (8B/conn) + 4KB stack buffer
+epoll_lt_server,1664,263392,5632,263392,21632,263392,4089.4,Static client_states[65536] wbuf (4112B/conn touched in BSS)
+epoll_et_server,1664,263392,5632,263392,21632,263392,4089.4,Static client_states[65536] wbuf (4112B/conn touched in BSS)
+epoll_lt_lean_server,1664,736,1664,736,1664,736,0.0,Pointer table (8B/conn); zero heap unless partial write occurs
+io_uring_opt_server,3200,33636,3200,33636,3328,33636,26.2,Provided buffer ring (8192 * 4KB = 32MB) + ring buffers

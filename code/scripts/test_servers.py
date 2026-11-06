@@ -40,7 +40,11 @@ def main():
         "bin/server_select",
         "bin/server_poll",
         "bin/server_epoll",
-        "bin/server_uring"
+        "bin/epoll_lt_server",
+        "bin/epoll_et_server",
+        "bin/epoll_lt_lean_server",
+        "bin/server_uring",
+        "bin/io_uring_opt_server"
     ]
     
     passed = 0
