@@ -44,7 +44,8 @@ def main():
         "bin/epoll_et_server",
         "bin/epoll_lt_lean_server",
         "bin/server_uring",
-        "bin/io_uring_opt_server"
+        "bin/io_uring_opt_server",
+        "bin/reference_server"
     ]
     
     passed = 0

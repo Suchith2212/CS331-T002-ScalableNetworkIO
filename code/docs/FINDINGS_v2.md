@@ -77,7 +77,7 @@ We calibrated `bin/loadgen` against `reference_server` at 1,000 connections acro
 ### 1. Old vs. New Throughput Comparison
 In Scenario 1, every open connection continuously sends a 29-byte request, awaits the 29-byte response, and immediately repeats (closed-loop active load).
 
-> **Source Artifacts**: Old data from `results/exp2_cpu_per_req.csv`; New data from [`code/results/s1_new_client.csv`](file:///f:/Sem%20V/CN/code/results/s1_new_client.csv)
+> **Source Artifacts**: Old data from [`code/results/exp2_cpu_per_req.csv`](file:///f:/Sem%20V/CN/code/results/exp2_cpu_per_req.csv); New data from [`code/results/s1_new_client.csv`](file:///f:/Sem%20V/CN/code/results/s1_new_client.csv)
 
 | Server | Conns | Old Client Throughput (req/s) | New Client Median Throughput (req/s) `[MEASURED]` | Throughput Spread [Min, Max] (req/s) `[MEASURED]` | Median p99 Latency ($\mu\text{s}$) `[MEASURED]` | Server Core 0 % `[MEASURED]` |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |

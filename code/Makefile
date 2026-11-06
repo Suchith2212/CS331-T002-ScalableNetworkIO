@@ -81,6 +81,6 @@ $(BIN_DIR)/io_uring_opt_server_stats: $(SRC_DIR)/io_uring_opt_server.c include/c
 	$(CC) $(CFLAGS) -DSTATS $< -o $@ -luring
 
 clean:
-	rm -rf $(BIN_DIR) results/*.json results/*.csv results/*.png results/strace_logs
+	rm -rf $(BIN_DIR)
 
 .PHONY: all stats clean
