@@ -75,7 +75,8 @@ The repository is organized into five top-level directories:
 │   ├── FINAL_REPORT.pdf               # Deliverable project report (PDF)
 │   └── final_report.md                # Report source markdown
 ├── ppt/                               # Presentation Slides
-│   └── Final_Presentation.pptx        # Final project presentation slides
+│   └── Final_Presentation.pptx        # Final project presentation slides (.pptx)
+│   └── Final_Presentation.pdf         # Exported presentation slides (PDF)
 └── ai/                                # AI Disclosure, Prompts, and Session Transcripts
     ├── README.md                      # Overview of AI usage and tooling disclosure
     ├── prompts/                       # Milestone prompt logs (01 to 04)
@@ -200,6 +201,6 @@ All benchmark runners are located in `code/scripts/` and automate affinity pinni
 ## 📄 Key Deliverables & Documentation
 
 - **Final Academic Report**: [`report/FINAL_REPORT.pdf`](report/FINAL_REPORT.pdf) (Source: [`report/final_report.md`](report/final_report.md))
-- **Presentation Slides**: [`ppt/Final_Presentation.pptx`](ppt/Final_Presentation.pptx)
+- **Presentation Slides**: [`ppt/Final_Presentation.pptx`](ppt/Final_Presentation.pptx) | [PDF Export](ppt/Final_Presentation.pdf)
 - **Comprehensive Findings Analysis**: [`code/docs/FINDINGS_v2.md`](code/docs/FINDINGS_v2.md)
 - **AI Transparency & Interaction Logs**: Documented in [`ai/`](ai/) (prompts and interactive session transcripts).
